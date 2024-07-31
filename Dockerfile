@@ -4,13 +4,17 @@
 # EXPOSE 8080
 # ENTRYPOINT ["java", "-jar", "/app.jar"]
 
+# Use an official OpenJDK runtime as a parent image
 FROM openjdk:11-jdk-slim
 
-# Use a fixed name for the JAR file, assuming it's named 'app.jar'
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the JAR file from the build context into the container
 COPY target/app.jar app.jar
 
-# Expose the port on which the application will run
+# Expose port 8080 to interact with the application
 EXPOSE 8080
 
-# Set the entry point to run the application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Define the command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
