@@ -10,11 +10,15 @@ FROM openjdk:11-jdk-slim
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPY target/app.jar .
+COPY target/app.jar app.jar
+
+# List files in /app for debugging
+RUN ls -l /app
 
 # Expose the port the app runs on
 EXPOSE 8080
 
 # Run the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
 
