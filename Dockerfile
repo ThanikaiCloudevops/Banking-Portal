@@ -1,20 +1,20 @@
-# FROM openjdk:11-jdk-slim
-# ARG JAR_FILE=target/*.jar
-# COPY ${JAR_FILE} app.jar
-# EXPOSE 8080
-# ENTRYPOINT ["java", "-jar", "/app.jar"]
-
-# Use an official OpenJDK runtime as a parent image
 FROM openjdk:11-jdk-slim
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the JAR file from the build context into the container
-COPY . .
-
-# Expose port 8080 to interact with the application
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
 EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app.jar"]
 
-# Define the command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# FROM openjdk:11-jdk-slim
+
+# # Set the working directory in the container
+# WORKDIR /app
+
+# # Copy the JAR file into the container
+# COPY target/app.jar app.jar
+
+# # Expose the port the app runs on
+# EXPOSE 8080
+
+# # Run the JAR file
+# ENTRYPOINT ["java", "-jar", "app.jar"]
+
