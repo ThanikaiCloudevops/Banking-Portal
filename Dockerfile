@@ -7,7 +7,7 @@
 FROM maven:3.8.4-openjdk-11 AS build
 WORKDIR /workspace
 COPY . /workspace/
-RUN mvn clean package
+RUN mvn clean compile
 
 # Stage 2: Copy JAR into final image
 FROM openjdk:11-jdk-slim
