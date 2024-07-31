@@ -11,7 +11,7 @@ FROM openjdk:11-jdk-slim
 WORKDIR /app
 
 # Copy the JAR file from the build context into the container
-COPY target/app.jar app.jar
+COPY . .
 
 # Expose port 8080 to interact with the application
 EXPOSE 8080
